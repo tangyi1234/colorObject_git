@@ -40,6 +40,13 @@
     [but1 setTitle:@"view绘制" forState:UIControlStateNormal];
     [but1 addTarget:self action:@selector(selectorBut1) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:but1];
+    
+    UIButton *but2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    but2.frame = CGRectMake(w - 120, 64, 100, 30);
+    but2.backgroundColor = [UIColor greenColor];
+    [but2 setTitle:@"马赛克" forState:UIControlStateNormal];
+    [but2 addTarget:self action:@selector(selectorBut2) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:but2];
 }
 
 - (void)selectorBut {
@@ -58,6 +65,12 @@
     TYDrawingPixelsView *view = [TYDrawingPixelsView addDrawingPixelsView];
 //    view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:view];
+}
+
+- (void)selectorBut2 {
+    NSData *data = [TYPublicMethods addWithFilePathDataStr:@"25"];
+    UIImage *image = [UIImage imageWithData:data];
+    _imageView.image = [TYDrawingPixels imageProcess:image];
 }
 
 - (void)didReceiveMemoryWarning {

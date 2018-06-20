@@ -14,4 +14,6 @@ typedef void (^imageRefBlackWhiteImageBlock) (CGImageRef imageRef);
 + (UIImage *)addImagePixel:(CGImageRef)imageRef;
 + (UIImage *)addImagePixel1:(CGImageRef)imageRef;
 + (void)addWithBlackWhiteImageData:(NSData *)data blackWhiteImage:(imageRefBlackWhiteImageBlock)blackWhiteImage;
+//打马赛克
++ (UIImage*)imageProcess:(UIImage*)image;
 @end
