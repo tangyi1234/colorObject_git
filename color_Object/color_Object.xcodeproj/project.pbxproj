@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A205E2EE20DB8E1600D8D5F1 /* TYIntegrationDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A205E2ED20DB8E1600D8D5F1 /* TYIntegrationDataViewController.m */; };
+		A205E2F120DBA36A00D8D5F1 /* TYIntegrationDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A205E2F020DBA36A00D8D5F1 /* TYIntegrationDataTableViewCell.m */; };
 		A2A2257820D89DAC003BB8F1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A2257720D89DAC003BB8F1 /* AppDelegate.m */; };
 		A2A2257B20D89DAC003BB8F1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A2257A20D89DAC003BB8F1 /* ViewController.m */; };
 		A2A2258120D89DAC003BB8F1 /* color_Object.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2A2257F20D89DAC003BB8F1 /* color_Object.xcdatamodeld */; };
@@ -22,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A205E2EC20DB8E1600D8D5F1 /* TYIntegrationDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYIntegrationDataViewController.h; sourceTree = "<group>"; };
+		A205E2ED20DB8E1600D8D5F1 /* TYIntegrationDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYIntegrationDataViewController.m; sourceTree = "<group>"; };
+		A205E2EF20DBA36A00D8D5F1 /* TYIntegrationDataTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYIntegrationDataTableViewCell.h; sourceTree = "<group>"; };
+		A205E2F020DBA36A00D8D5F1 /* TYIntegrationDataTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYIntegrationDataTableViewCell.m; sourceTree = "<group>"; };
 		A2A2257320D89DAB003BB8F1 /* color_Object.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = color_Object.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A2257620D89DAC003BB8F1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A2A2257720D89DAC003BB8F1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -81,6 +87,10 @@
 				A2A2257A20D89DAC003BB8F1 /* ViewController.m */,
 				A2A2258F20D8A6F2003BB8F1 /* TYDrawingPixelsViewController.h */,
 				A2A2259020D8A6F2003BB8F1 /* TYDrawingPixelsViewController.m */,
+				A205E2EC20DB8E1600D8D5F1 /* TYIntegrationDataViewController.h */,
+				A205E2ED20DB8E1600D8D5F1 /* TYIntegrationDataViewController.m */,
+				A205E2EF20DBA36A00D8D5F1 /* TYIntegrationDataTableViewCell.h */,
+				A205E2F020DBA36A00D8D5F1 /* TYIntegrationDataTableViewCell.m */,
 				A2A2259220D8A804003BB8F1 /* TYDrawingPixelsView.h */,
 				A2A2259320D8A804003BB8F1 /* TYDrawingPixelsView.m */,
 				A2A2259620D8B419003BB8F1 /* TYDrawingPixels.h */,
@@ -177,7 +187,9 @@
 				A2A2259120D8A6F2003BB8F1 /* TYDrawingPixelsViewController.m in Sources */,
 				A2A2259F20D8F56A003BB8F1 /* TYPublicMethods.m in Sources */,
 				A2A2259420D8A804003BB8F1 /* TYDrawingPixelsView.m in Sources */,
+				A205E2F120DBA36A00D8D5F1 /* TYIntegrationDataTableViewCell.m in Sources */,
 				A2A2258920D89DAC003BB8F1 /* main.m in Sources */,
+				A205E2EE20DB8E1600D8D5F1 /* TYIntegrationDataViewController.m in Sources */,
 				A2A2257820D89DAC003BB8F1 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

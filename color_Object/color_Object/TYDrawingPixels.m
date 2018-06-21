@@ -517,4 +517,94 @@
     
     return outImage;
 }
+
++ (void)drawPictures {
+    //设置图片的分辨率
+    NSUInteger width = 100;
+    NSUInteger height = 100;
+    //第二步：创建颜色空间
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef contextRef = CGBitmapContextCreate(nil, width, height, 8, width*4, colorSpaceRef, kCGImageAlphaPremultipliedLast);
+}
+
++ (CGImageRef)addBlackWhite:(NSData *)data {
+    if (!data) {
+        return nil;
+    }
+    //获取source
+    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
+    
+    //解码
+    CGImageRef imageRef = CGImageSourceCreateImageAtIndex(source, 0, NULL);
+
+    size_t width  = CGImageGetWidth(imageRef);
+    size_t height = CGImageGetHeight(imageRef);
+    
+    size_t bitsPerComponent = CGImageGetBitsPerComponent(imageRef);
+    size_t bitsPerPixel = CGImageGetBitsPerPixel(imageRef);
+    
+    size_t bytesPerRow = CGImageGetBytesPerRow(imageRef);
+    
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(imageRef);
+    
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+    
+    
+    bool shouldInterpolate = CGImageGetShouldInterpolate(imageRef);
+    
+    CGColorRenderingIntent intent = CGImageGetRenderingIntent(imageRef);
+    
+    CGDataProviderRef dataProvider = CGImageGetDataProvider(imageRef);
+    
+    CFDataRef dataRef = CGDataProviderCopyData(dataProvider);
+    
+    UInt8 *buffer = (UInt8*)CFDataGetBytePtr(dataRef);
+    
+    NSUInteger  x, y;
+    //遍历出每一个像素
+    for (y = 0; y < height; y++) {
+        for (x = 0; x < width; x++) {
+            UInt8 *tmp;
+            //将其转换为RGB格式
+            tmp = buffer + y * bytesPerRow + x * 4;
+            
+            UInt8 red,green,blue;
+            red = *(tmp + 0);
+            green = *(tmp + 1);
+            blue = *(tmp + 2);
+            
+            UInt8 brightness;
+            brightness = (77 * red + 28 * green + 151 * blue) / 256;
+            *(tmp + 0) = brightness;
+            *(tmp + 1) = brightness;
+            *(tmp + 2) = brightness;
+        }
+    }
+    
+    
+    CFDataRef effectedData = CFDataCreate(NULL, buffer, CFDataGetLength(dataRef));
+    
+    CGDataProviderRef effectedDataProvider = CGDataProviderCreateWithCFData(effectedData);
+    
+    CGImageRef effectedCgImage = CGImageCreate(
+                                               width, height,
+                                               bitsPerComponent, bitsPerPixel, bytesPerRow,
+                                               colorSpace, bitmapInfo, effectedDataProvider,
+                                               NULL, shouldInterpolate, intent);
+    
+    if (!effectedCgImage) {
+        return nil;
+    }
+    
+    CGImageRelease(effectedCgImage);
+    
+    CFRelease(effectedDataProvider);
+    
+    CFRelease(effectedData);
+    
+    CFRelease(dataRef);
+    
+    return effectedCgImage;
+}
 @end

@@ -20,6 +20,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initView];
+    switch (_style) {
+        case BlackWhite:
+            [self addWithBlackWhite];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)initView {
@@ -71,6 +79,11 @@
     NSData *data = [TYPublicMethods addWithFilePathDataStr:@"25"];
     UIImage *image = [UIImage imageWithData:data];
     _imageView.image = [TYDrawingPixels imageProcess:image];
+}
+
+- (void)addWithBlackWhite {
+    NSData *data = [TYPublicMethods addWithFilePathDataStr:@"25"];
+    _imageView.image = [UIImage imageWithCGImage:[TYDrawingPixels addBlackWhite:data]];
 }
 
 - (void)didReceiveMemoryWarning {

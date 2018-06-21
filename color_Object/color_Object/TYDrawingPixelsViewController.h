@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef enum _TYStyle{
+    BlackWhite = 0,
+    Mosaic,
+} TYStyle;
 @interface TYDrawingPixelsViewController : UIViewController
-
+@property (nonatomic, assign) TYStyle style;
 @end

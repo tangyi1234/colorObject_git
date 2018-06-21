@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TYDrawingPixelsViewController.h"
+#import "TYIntegrationDataViewController.h"
 @interface ViewController ()
 
 @end
@@ -28,11 +29,21 @@
     [but addTarget:self action:@selector(selectorBut) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:but];
     
-
+    UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    but1.frame = CGRectMake(10, 140, 100, 30);
+    but1.backgroundColor = [UIColor greenColor];
+    [but1 setTitle:@"样式全解" forState:UIControlStateNormal];
+    [but1 addTarget:self action:@selector(selectorBut1) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:but1];
 }
 
 - (void)selectorBut {
     TYDrawingPixelsViewController *vc = [[TYDrawingPixelsViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)selectorBut1 {
+    TYIntegrationDataViewController *vc = [[TYIntegrationDataViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
