@@ -30,6 +30,7 @@
     }
 }
 
+
 - (void)initView {
 
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, h - 200, w, 200)];
@@ -83,7 +84,8 @@
 
 - (void)addWithBlackWhite {
     NSData *data = [TYPublicMethods addWithFilePathDataStr:@"25"];
-    _imageView.image = [UIImage imageWithCGImage:[TYDrawingPixels addBlackWhite:data]];
+    _imageView.image = [TYDrawingPixels addBlackWhite:data];
+
 }
 
 - (void)didReceiveMemoryWarning {

@@ -528,7 +528,7 @@
     CGContextRef contextRef = CGBitmapContextCreate(nil, width, height, 8, width*4, colorSpaceRef, kCGImageAlphaPremultipliedLast);
 }
 
-+ (CGImageRef)addBlackWhite:(NSData *)data {
++ (UIImage *)addBlackWhite:(NSData *)data {
     if (!data) {
         return nil;
     }
@@ -592,6 +592,7 @@
                                                bitsPerComponent, bitsPerPixel, bytesPerRow,
                                                colorSpace, bitmapInfo, effectedDataProvider,
                                                NULL, shouldInterpolate, intent);
+    UIImage *outImage = [UIImage imageWithCGImage:effectedCgImage];
     
     if (!effectedCgImage) {
         return nil;
@@ -605,6 +606,6 @@
     
     CFRelease(dataRef);
     
-    return effectedCgImage;
+    return outImage;
 }
 @end

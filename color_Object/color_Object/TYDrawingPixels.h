@@ -18,5 +18,5 @@ typedef void (^imageRefBlackWhiteImageBlock) (CGImageRef imageRef);
 + (UIImage*)imageProcess:(UIImage*)image;
 
 //黑白图
-+ (CGImageRef)addBlackWhite:(NSData *)data;
++ (UIImage *)addBlackWhite:(NSData *)data;
 @end
