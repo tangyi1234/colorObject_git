@@ -19,4 +19,8 @@ typedef void (^imageRefBlackWhiteImageBlock) (CGImageRef imageRef);
 
 //黑白图
 + (UIImage *)addBlackWhite:(NSData *)data;
+//还原黑白
++ (UIImage *)addReduction:(CGImageRef)imageRef;
+//裁剪图片
++ (UIImage *)addWithCutOutPictures:(NSData *)data tailoring:(CGSize)size;
 @end

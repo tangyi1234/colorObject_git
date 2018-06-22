@@ -24,6 +24,15 @@
         case BlackWhite:
             [self addWithBlackWhite];
             break;
+        case Mosaic:
+            [self addWithMosaic];
+            break;
+        case WhiteDots:
+            [self addWithWhiteDots];
+            break;
+        case CutSize:
+            [self addWithCutSize];
+            break;
             
         default:
             break;
@@ -36,26 +45,26 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, h - 200, w, 200)];
     [self.view addSubview:_imageView = imageView];
     
-    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
-    but.frame = CGRectMake(10, 64, 100, 30);
-    but.backgroundColor = [UIColor redColor];
-    [but setTitle:@"绘制图片" forState:UIControlStateNormal];
-    [but addTarget:self action:@selector(selectorBut) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:but];
-    
-    UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    but1.frame = CGRectMake(120, 64, 100, 30);
-    but1.backgroundColor = [UIColor yellowColor];
-    [but1 setTitle:@"view绘制" forState:UIControlStateNormal];
-    [but1 addTarget:self action:@selector(selectorBut1) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:but1];
-    
-    UIButton *but2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    but2.frame = CGRectMake(w - 120, 64, 100, 30);
-    but2.backgroundColor = [UIColor greenColor];
-    [but2 setTitle:@"马赛克" forState:UIControlStateNormal];
-    [but2 addTarget:self action:@selector(selectorBut2) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:but2];
+//    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+//    but.frame = CGRectMake(10, 64, 100, 30);
+//    but.backgroundColor = [UIColor redColor];
+//    [but setTitle:@"绘制图片" forState:UIControlStateNormal];
+//    [but addTarget:self action:@selector(selectorBut) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:but];
+//    
+//    UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
+//    but1.frame = CGRectMake(120, 64, 100, 30);
+//    but1.backgroundColor = [UIColor yellowColor];
+//    [but1 setTitle:@"view绘制" forState:UIControlStateNormal];
+//    [but1 addTarget:self action:@selector(selectorBut1) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:but1];
+//    
+//    UIButton *but2 = [UIButton buttonWithType:UIButtonTypeCustom];
+//    but2.frame = CGRectMake(w - 120, 64, 100, 30);
+//    but2.backgroundColor = [UIColor greenColor];
+//    [but2 setTitle:@"马赛克" forState:UIControlStateNormal];
+//    [but2 addTarget:self action:@selector(selectorBut2) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:but2];
 }
 
 - (void)selectorBut {
@@ -83,9 +92,45 @@
 }
 
 - (void)addWithBlackWhite {
+    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+    but.frame = CGRectMake(10, 64, 100, 30);
+    but.backgroundColor = [UIColor redColor];
+    [but setTitle:@"转黑白" forState:UIControlStateNormal];
+    [but addTarget:self action:@selector(selectorWithBlack) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:but];
+    
+    UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    but1.frame = CGRectMake(120, 64, 100, 30);
+    but1.backgroundColor = [UIColor greenColor];
+    [but1 setTitle:@"还原" forState:UIControlStateNormal];
+    [but1 addTarget:self action:@selector(selectorReduction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:but1];
+}
+
+- (void)addWithMosaic {
+    NSData *data = [TYPublicMethods addWithFilePathDataStr:@"25"];
+    UIImage *image = [UIImage imageWithData:data];
+    _imageView.image = [TYDrawingPixels imageProcess:image];
+}
+
+- (void)addWithWhiteDots {
+    NSData *data = [TYPublicMethods addWithFilePathDataStr:@"25"];
+    UIImage *image = [UIImage imageWithData:data];
+    _imageView.image = [TYDrawingPixels addImagePixel1:image.CGImage];
+}
+
+- (void)addWithCutSize {
+    NSData *data = [TYPublicMethods addWithFilePathDataStr:@"25"];
+    _imageView.image = [TYDrawingPixels addWithCutOutPictures:data tailoring:CGSizeMake(500, 500)];
+}
+
+- (void)selectorWithBlack {
     NSData *data = [TYPublicMethods addWithFilePathDataStr:@"25"];
     _imageView.image = [TYDrawingPixels addBlackWhite:data];
+}
 
+- (void)selectorReduction {
+    _imageView.image = [TYDrawingPixels addReduction:_imageView.image.CGImage];
 }
 
 - (void)didReceiveMemoryWarning {

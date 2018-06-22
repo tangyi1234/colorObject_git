@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _array = [NSArray arrayWithObjects:@"黑白",@"马赛克", nil];
+    _array = [NSArray arrayWithObjects:@"黑白",@"马赛克",@"添加白点",@"裁剪大小", nil];
     [self initTableView];
 }
 

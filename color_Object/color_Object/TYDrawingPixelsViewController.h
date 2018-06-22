@@ -10,6 +10,8 @@
 typedef enum _TYStyle{
     BlackWhite = 0,
     Mosaic,
+    WhiteDots,
+    CutSize,
 } TYStyle;
 @interface TYDrawingPixelsViewController : UIViewController
 @property (nonatomic, assign) TYStyle style;

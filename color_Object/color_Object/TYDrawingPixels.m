@@ -58,7 +58,7 @@
             thisR = R(color);
             thisR = thisR + 2 * i;
             thisR = thisR > 255 ? 255 : thisR;
-             NSLog(@"红色值：%d",thisR);
+//             NSLog(@"红色值：%d",thisR);
             //获取绿色分量值
 
             thisG = G(color);
@@ -93,8 +93,6 @@
 + (UIImage *)addImagePixel1:(CGImageRef)imageRef {
     
     //创一个区域
-//    NSUInteger width = 100;
-//    NSUInteger height = 100;
     NSUInteger width = CGImageGetWidth(imageRef);
     NSUInteger height = CGImageGetHeight(imageRef);
     
@@ -120,17 +118,8 @@
             UInt32 color = *currnetPixels;
             //            NSLog(@"====%d====",color);
             UInt32 thisR,thisG,thisB,thisA;
-            //            thisR = *(currnetPixels + 0);
-            //            thisG = *(currnetPixels + 1);
-            //            thisB = *(currnetPixels + 2);
-            //            thisA = *(currnetPixels + 3);
-            //
-            //            thisR = 255 - 30;
-            //            thisG = 24;
-            //            thisB = 230;
-            //            thisA = 10;
             //定义亮度
-            int lumi = 100;
+            int lumi = 50;
             //如何获取
             //获取红色分量值（R）
             
@@ -579,6 +568,7 @@
             *(tmp + 0) = brightness;
             *(tmp + 1) = brightness;
             *(tmp + 2) = brightness;
+
         }
     }
     
@@ -589,6 +579,158 @@
     
     CGImageRef effectedCgImage = CGImageCreate(
                                                width, height,
+                                               bitsPerComponent, bitsPerPixel, bytesPerRow,
+                                               colorSpace, bitmapInfo, effectedDataProvider,
+                                               NULL, shouldInterpolate, intent);
+    UIImage *outImage = [UIImage imageWithCGImage:effectedCgImage];
+    
+    if (!effectedCgImage) {
+        return nil;
+    }
+    
+    CGImageRelease(effectedCgImage);
+    
+    CFRelease(effectedDataProvider);
+    
+    CFRelease(effectedData);
+    
+    CFRelease(dataRef);
+    
+    return outImage;
+}
+
++ (UIImage *)addReduction:(CGImageRef)imageRef{
+    if (!imageRef) {
+        return nil;
+    }
+    
+    size_t width  = CGImageGetWidth(imageRef);
+    size_t height = CGImageGetHeight(imageRef);
+    
+    size_t bitsPerComponent = CGImageGetBitsPerComponent(imageRef);
+    size_t bitsPerPixel = CGImageGetBitsPerPixel(imageRef);
+    
+    size_t bytesPerRow = CGImageGetBytesPerRow(imageRef);
+    
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(imageRef);
+    
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+    
+    
+    bool shouldInterpolate = CGImageGetShouldInterpolate(imageRef);
+    
+    CGColorRenderingIntent intent = CGImageGetRenderingIntent(imageRef);
+    
+    CGDataProviderRef dataProvider = CGImageGetDataProvider(imageRef);
+    
+    CFDataRef dataRef = CGDataProviderCopyData(dataProvider);
+    
+    UInt8 *buffer = (UInt8*)CFDataGetBytePtr(dataRef);
+    
+    NSUInteger  x, y;
+    
+    //遍历出每一个像素
+    for (y = 0; y < height; y++) {
+        for (x = 0; x < width; x++) {
+            UInt8 *tmp;
+            //将其转换为RGB格式
+            tmp = buffer + y * bytesPerRow + x * 4;
+            
+            UInt8 red,green,blue;
+            red = *(tmp + 0);
+            green = *(tmp + 1);
+            blue = *(tmp + 2);
+            //打印黑白色值
+//            NSLog(@"黑白色值分别是多少red:%hhu green:%hhu blue:%hhu",red,green,blue);
+            
+        }
+    }
+    
+    
+    CFDataRef effectedData = CFDataCreate(NULL, buffer, CFDataGetLength(dataRef));
+    
+    CGDataProviderRef effectedDataProvider = CGDataProviderCreateWithCFData(effectedData);
+    
+    CGImageRef effectedCgImage = CGImageCreate(
+                                               width, height,
+                                               bitsPerComponent, bitsPerPixel, bytesPerRow,
+                                               colorSpace, bitmapInfo, effectedDataProvider,
+                                               NULL, shouldInterpolate, intent);
+    UIImage *outImage = [UIImage imageWithCGImage:effectedCgImage];
+    
+    if (!effectedCgImage) {
+        return nil;
+    }
+    
+    CGImageRelease(effectedCgImage);
+    
+    CFRelease(effectedDataProvider);
+    
+    CFRelease(effectedData);
+    
+    CFRelease(dataRef);
+    
+    return outImage;
+}
+
++ (UIImage *)addWithCutOutPictures:(NSData *)data tailoring:(CGSize)size{
+    if (!data) {
+        return nil;
+    }
+    //获取source
+    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
+    //解码
+    CGImageRef imageRef = CGImageSourceCreateImageAtIndex(source, 0, NULL);
+    
+    size_t width  = CGImageGetWidth(imageRef);
+    size_t height = CGImageGetHeight(imageRef);
+    
+    size_t bitsPerComponent = CGImageGetBitsPerComponent(imageRef);
+    size_t bitsPerPixel = CGImageGetBitsPerPixel(imageRef);
+    
+    size_t bytesPerRow = CGImageGetBytesPerRow(imageRef);
+    
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(imageRef);
+    
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+    
+    bool shouldInterpolate = CGImageGetShouldInterpolate(imageRef);
+    
+    CGColorRenderingIntent intent = CGImageGetRenderingIntent(imageRef);
+    
+    CGDataProviderRef dataProvider = CGImageGetDataProvider(imageRef);
+    
+    CFDataRef dataRef = CGDataProviderCopyData(dataProvider);
+    
+    UInt8 *buffer = (UInt8*)CFDataGetBytePtr(dataRef);
+    
+    NSUInteger  x, y;
+    //遍历出每一个像素
+    for (y = 0; y < height; y++) {
+        for (x = 0; x < width; x++) {
+            UInt8 *tmp;
+            //将其转换为RGB格式
+            tmp = buffer + y * bytesPerRow + x * 4;
+            
+            UInt8 red,green,blue;
+            red = *(tmp + 0);
+            green = *(tmp + 1);
+            blue = *(tmp + 2);
+            
+        }
+    }
+    
+    
+    CFDataRef effectedData = CFDataCreate(NULL, buffer, CFDataGetLength(dataRef));
+    
+    CGDataProviderRef effectedDataProvider = CGDataProviderCreateWithCFData(effectedData);
+    
+    size_t width_w = size.width;
+    
+    size_t height_h = size.height;
+    
+    CGImageRef effectedCgImage = CGImageCreate(
+                                               width_w, height_h,
                                                bitsPerComponent, bitsPerPixel, bytesPerRow,
                                                colorSpace, bitmapInfo, effectedDataProvider,
                                                NULL, shouldInterpolate, intent);
