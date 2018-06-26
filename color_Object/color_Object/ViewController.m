@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "TYDrawingPixelsViewController.h"
 #import "TYIntegrationDataViewController.h"
+#import "TYRGBViewController.h"
+
 @interface ViewController ()
 
 @end
@@ -35,6 +37,13 @@
     [but1 setTitle:@"样式全解" forState:UIControlStateNormal];
     [but1 addTarget:self action:@selector(selectorBut1) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:but1];
+    
+    UIButton *but2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    but2.frame = CGRectMake(10, 180, 100, 30);
+    but2.backgroundColor = [UIColor greenColor];
+    [but2 setTitle:@"RGB" forState:UIControlStateNormal];
+    [but2 addTarget:self action:@selector(selectorBut2) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:but2];
 }
 
 - (void)selectorBut {
@@ -44,6 +53,11 @@
 
 - (void)selectorBut1 {
     TYIntegrationDataViewController *vc = [[TYIntegrationDataViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)selectorBut2 {
+    TYRGBViewController *vc = [[TYRGBViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

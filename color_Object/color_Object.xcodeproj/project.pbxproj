@@ -21,6 +21,8 @@
 		A2A2259A20D8E3F7003BB8F1 /* 25.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A2259920D8E3F7003BB8F1 /* 25.png */; };
 		A2A2259C20D8F49E003BB8F1 /* 8090.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A2259B20D8F49E003BB8F1 /* 8090.png */; };
 		A2A2259F20D8F56A003BB8F1 /* TYPublicMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A2259E20D8F56A003BB8F1 /* TYPublicMethods.m */; };
+		A2A8D7A420E08F1C00248B57 /* TYRGBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A8D7A320E08F1C00248B57 /* TYRGBViewController.m */; };
+		A2A8D7A720E08F8800248B57 /* TYRGBDrawingPixels.m in Sources */ = {isa = PBXBuildFile; fileRef = A2A8D7A620E08F8800248B57 /* TYRGBDrawingPixels.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,10 @@
 		A2A2259B20D8F49E003BB8F1 /* 8090.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8090.png; sourceTree = "<group>"; };
 		A2A2259D20D8F56A003BB8F1 /* TYPublicMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPublicMethods.h; sourceTree = "<group>"; };
 		A2A2259E20D8F56A003BB8F1 /* TYPublicMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPublicMethods.m; sourceTree = "<group>"; };
+		A2A8D7A220E08F1C00248B57 /* TYRGBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYRGBViewController.h; sourceTree = "<group>"; };
+		A2A8D7A320E08F1C00248B57 /* TYRGBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYRGBViewController.m; sourceTree = "<group>"; };
+		A2A8D7A520E08F8800248B57 /* TYRGBDrawingPixels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYRGBDrawingPixels.h; sourceTree = "<group>"; };
+		A2A8D7A620E08F8800248B57 /* TYRGBDrawingPixels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYRGBDrawingPixels.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +95,16 @@
 				A2A2259020D8A6F2003BB8F1 /* TYDrawingPixelsViewController.m */,
 				A205E2EC20DB8E1600D8D5F1 /* TYIntegrationDataViewController.h */,
 				A205E2ED20DB8E1600D8D5F1 /* TYIntegrationDataViewController.m */,
+				A2A8D7A220E08F1C00248B57 /* TYRGBViewController.h */,
+				A2A8D7A320E08F1C00248B57 /* TYRGBViewController.m */,
 				A205E2EF20DBA36A00D8D5F1 /* TYIntegrationDataTableViewCell.h */,
 				A205E2F020DBA36A00D8D5F1 /* TYIntegrationDataTableViewCell.m */,
 				A2A2259220D8A804003BB8F1 /* TYDrawingPixelsView.h */,
 				A2A2259320D8A804003BB8F1 /* TYDrawingPixelsView.m */,
 				A2A2259620D8B419003BB8F1 /* TYDrawingPixels.h */,
 				A2A2259720D8B419003BB8F1 /* TYDrawingPixels.m */,
+				A2A8D7A520E08F8800248B57 /* TYRGBDrawingPixels.h */,
+				A2A8D7A620E08F8800248B57 /* TYRGBDrawingPixels.m */,
 				A2A2259D20D8F56A003BB8F1 /* TYPublicMethods.h */,
 				A2A2259E20D8F56A003BB8F1 /* TYPublicMethods.m */,
 				A2A2259920D8E3F7003BB8F1 /* 25.png */,
@@ -181,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2A8D7A720E08F8800248B57 /* TYRGBDrawingPixels.m in Sources */,
 				A2A2259820D8B419003BB8F1 /* TYDrawingPixels.m in Sources */,
 				A2A2258120D89DAC003BB8F1 /* color_Object.xcdatamodeld in Sources */,
 				A2A2257B20D89DAC003BB8F1 /* ViewController.m in Sources */,
@@ -191,6 +202,7 @@
 				A2A2258920D89DAC003BB8F1 /* main.m in Sources */,
 				A205E2EE20DB8E1600D8D5F1 /* TYIntegrationDataViewController.m in Sources */,
 				A2A2257820D89DAC003BB8F1 /* AppDelegate.m in Sources */,
+				A2A8D7A420E08F1C00248B57 /* TYRGBViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

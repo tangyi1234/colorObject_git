@@ -728,6 +728,20 @@
     size_t width_w = size.width;
     
     size_t height_h = size.height;
+    /*
+     sizt_t是定义的一个可移植性的单位，在64位机器中为8字节，32位位4字节。
+     width：图片宽度像素
+     height：图片高度像素
+     bitsPerComponent：每个颜色的比特数，例如在rgba-32模式下为8
+     bitsPerPixel：每个像素的总比特数
+     bytesPerRow：每一行占用的字节数，注意这里的单位是字节
+     space：颜色空间模式，例如const CFStringRef kCGColorSpaceGenericRGB 这个函数可以返回一个颜色空间对象。
+     bitmapInfo：位图像素布局，这是个枚举
+     provider：数据源提供者
+     decode[]：解码渲染数组
+     shouldInterpolate：是否抗锯齿
+     intent：图片相关参数
+     */
     
     CGImageRef effectedCgImage = CGImageCreate(
                                                width_w, height_h,
